@@ -12,8 +12,8 @@ class Telegram(object):
 
 class DB(object):
     host = os.getenv('DB_HOST')
-    port = os.getenv('DB_PORT')
-    user = os.getenv('DB_PORT')
+    port = int(os.getenv('DB_PORT'))
+    user = os.getenv('DB_USER')
     password = os.getenv('DB_PASS')
     db = os.getenv('db_name')
 

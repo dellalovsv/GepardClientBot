@@ -1,5 +1,7 @@
 from config import Telegram
 
+from handlers import start
+
 import asyncio
 import logging
 
@@ -10,7 +12,9 @@ from aiogram.fsm.storage.memory import MemoryStorage
 async def main():
     bot = Bot(token=Telegram.token, parse_mode='HTML')
     dp = Dispatcher(storage=MemoryStorage())
-    # dp.include_routers()
+    dp.include_routers(
+        start.routers_start,
+    )
     await dp.start_polling(bot)
 
 

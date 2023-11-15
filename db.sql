@@ -1,0 +1,1 @@
+ALTER TABLE `users` ADD `tid` BIGINT NOT NULL DEFAULT '0' AFTER `deleted`;
