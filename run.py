@@ -1,6 +1,6 @@
 from config import Telegram
 
-from handlers import start
+from handlers import start, info
 
 import asyncio
 import logging
@@ -14,6 +14,7 @@ async def main():
     dp = Dispatcher(storage=MemoryStorage())
     dp.include_routers(
         start.routers_start,
+        info.router_info,
     )
     await dp.start_polling(bot)
 
