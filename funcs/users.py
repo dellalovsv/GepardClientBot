@@ -11,7 +11,6 @@ class CheckUser(Filter):
     """
     Проверка существования абонента и его авторизация в системе.
     """
-
     async def __call__(self, m: Message):
         try:
             sql = 'select count(*) as count from users where tid=%s'

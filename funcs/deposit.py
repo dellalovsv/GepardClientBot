@@ -1,4 +1,4 @@
-from . import query, logs
+from . import query, logs, tp
 
 
 def get_deposit(uid: int = None) -> float | None:
@@ -28,3 +28,13 @@ def get_credit(uid: int = None) -> dict | int | None:
     except Exception as e:
         logs.logger.error(f'funcs.deposit.get_credit: {e}')
         return -1000
+
+
+def get_left_days(uid: int = None) -> int | None:
+    dep = get_deposit(uid)
+    tarif = tp.get_tp(uid)
+    if float(tarif['day_fee']) <= 0:
+        return None
+    days = float(dep) / float(tarif['day_fee'])
+    return int(days)
+
